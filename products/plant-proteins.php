@@ -108,47 +108,78 @@ require __DIR__ . '/../includes/header.php';
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <?php foreach ($category['items'] as $item): ?>
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow p-6 sm:p-8 flex flex-col">
-          <div class="flex items-start justify-between gap-4 mb-3">
-            <h3 class="text-xl font-bold text-brand-navy font-heading m-0">
-              <?= e($item['name']) ?>
-            </h3>
-            <span class="px-2.5 py-1 rounded bg-green-50 text-brand-green text-xs font-bold font-heading whitespace-nowrap">
-              Bulk &amp; Bags
-            </span>
+        <div class="product-card group bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden">
+          <!-- Product Photography Header -->
+          <div class="relative aspect-[16/10] overflow-hidden bg-slate-100 border-b border-slate-100">
+            <img src="<?= asset($item['image']) ?>" 
+                 alt="<?= e($item['name']) ?>" 
+                 loading="lazy" 
+                 width="640" 
+                 height="400" 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+            <div class="absolute top-3 left-3">
+              <span class="px-2.5 py-1 rounded bg-white/95 backdrop-blur-sm text-brand-navy text-[11px] font-bold font-heading shadow-sm inline-flex items-center gap-1.5">
+                <i class="fa-solid fa-certificate text-brand-green"></i>
+                <span>COA Verified</span>
+              </span>
+            </div>
+            <div class="absolute top-3 right-3">
+              <span class="px-2.5 py-1 rounded bg-green-700/90 backdrop-blur-sm text-white text-[11px] font-bold font-heading uppercase tracking-wider shadow-sm">
+                Bulk &amp; Bags
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs">
+              <span class="font-heading font-semibold text-slate-100 drop-shadow flex items-center gap-1.5">
+                <i class="fa-solid fa-seedling text-brand-orange"></i>
+                <span><?= e($item['grades'][0] ?? 'Prime Quality') ?></span>
+              </span>
+              <span class="text-[11px] text-slate-200 bg-slate-900/60 px-2 py-0.5 rounded backdrop-blur-sm">
+                <?= e($category['title']) ?>
+              </span>
+            </div>
           </div>
 
-          <p class="text-slate-600 text-sm leading-relaxed mb-6">
-            <?= e($item['description']) ?>
-          </p>
+          <!-- Product Details Body -->
+          <div class="p-6 sm:p-7 flex flex-col flex-grow">
+            <div class="flex items-start justify-between gap-4 mb-2.5">
+              <h3 class="text-xl font-bold text-brand-navy font-heading group-hover:text-brand-green transition-colors m-0">
+                <?= e($item['name']) ?>
+              </h3>
+            </div>
 
-          <div class="bg-slate-50 rounded-lg p-4 border border-slate-200/80 space-y-3 text-xs mb-6 mt-auto">
-            <div>
-              <strong class="text-slate-900 font-heading block mb-0.5">Target Applications:</strong>
-              <span class="text-slate-600"><?= e($item['application']) ?></span>
-            </div>
-            <div class="pt-2 border-t border-slate-200">
-              <strong class="text-brand-green font-heading block mb-0.5">Indicative Specification Range:</strong>
-              <span class="text-slate-600"><?= e($item['specs_status']) ?></span>
-            </div>
-            <div class="pt-2 border-t border-slate-200">
-              <strong class="text-slate-900 font-heading block mb-0.5">Standard Packaging:</strong>
-              <span class="text-slate-600"><?= e($item['packaging']) ?></span>
-            </div>
-            <div class="pt-2 border-t border-slate-200">
-              <strong class="text-brand-orange font-heading block mb-0.5">Documentation Supplied:</strong>
-              <span class="text-slate-600"><?= e($item['doc_requirements']) ?></span>
-            </div>
-          </div>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              <?= e($item['description']) ?>
+            </p>
 
-          <div class="pt-2">
-            <a href="<?= url('contact.php?product=' . urlencode($item['name']) . '&cat=' . urlencode($category['title']) . '#quote-form') ?>" 
-               class="btn-primary text-xs py-2.5 px-5 w-full text-center justify-center">
-              <i class="fa-solid fa-file-invoice mr-1"></i>
-              <span>Enquire for <?= e($item['name']) ?></span>
-            </a>
+            <div class="bg-slate-50 rounded-lg p-4 border border-slate-200/80 space-y-3 text-xs mb-6 mt-auto">
+              <div>
+                <strong class="text-slate-900 font-heading block mb-0.5">Target Applications:</strong>
+                <span class="text-slate-600"><?= e($item['application']) ?></span>
+              </div>
+              <div class="pt-2 border-t border-slate-200">
+                <strong class="text-brand-green font-heading block mb-0.5">Indicative Specification Range:</strong>
+                <span class="text-slate-600"><?= e($item['specs_status']) ?></span>
+              </div>
+              <div class="pt-2 border-t border-slate-200">
+                <strong class="text-slate-900 font-heading block mb-0.5">Standard Packaging:</strong>
+                <span class="text-slate-600"><?= e($item['packaging']) ?></span>
+              </div>
+              <div class="pt-2 border-t border-slate-200">
+                <strong class="text-brand-orange font-heading block mb-0.5">Documentation Supplied:</strong>
+                <span class="text-slate-600"><?= e($item['doc_requirements']) ?></span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a href="<?= url('contact.php?product=' . urlencode($item['name']) . '&cat=' . urlencode($category['title']) . '#quote-form') ?>" 
+                 class="btn-primary text-xs py-2.5 px-5 w-full text-center justify-center">
+                <i class="fa-solid fa-file-invoice mr-1.5"></i>
+                <span>Enquire for <?= e($item['name']) ?></span>
+              </a>
+            </div>
           </div>
         </div>
       <?php endforeach; ?>

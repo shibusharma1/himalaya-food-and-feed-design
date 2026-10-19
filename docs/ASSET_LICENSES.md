@@ -57,6 +57,32 @@ All photography was obtained from high-resolution, royalty-free commercial stock
 | `denmark-office.webp` | About Us &amp; Denmark Desk | Modern Copenhagen corporate business district | Unsplash Commercial License. |
 | `singapore-trade.webp` | Markets &amp; Singapore Desk | Singapore international maritime trade hub and port | Unsplash Commercial License. |
 
+### 4.2 Individual Product Item Photography (`assets/images/products/items/*.webp`)
+
+All 19 individual product commodity photographs were sourced from royalty-free commercial photography via Unsplash, resampled and centered to a crisp 16:10 aspect ratio (`640×400`), and compressed using next-generation `.webp` encoding with lot metadata overlays:
+
+| Filename | Product Item | Category | Subject Description | License Terms |
+| :--- | :--- | :--- | :--- | :--- |
+| `meat-bone-meal.webp` | Meat and Bone Meal (MBM) | Animal Proteins | Rendered animal protein meal granules | Unsplash Commercial License. |
+| `poultry-meal.webp` | Poultry By-Product Meal | Animal Proteins | Golden feed protein meal | Unsplash Commercial License. |
+| `fish-meal.webp` | Fish Meal | Animal Proteins | Marine protein aquaculture meal | Unsplash Commercial License. |
+| `feather-meal.webp` | Hydrolyzed Feather Meal | Animal Proteins | Steam-hydrolyzed high-density protein | Unsplash Commercial License. |
+| `soybean-meal.webp` | Soybean Meal (SBM) | Plant Proteins | Dehulled golden soybean flakes | Unsplash Commercial License. |
+| `corn-gluten-meal.webp` | Corn Gluten Meal (CGM 60%) | Plant Proteins | Golden corn protein meal | Unsplash Commercial License. |
+| `ddgs.webp` | Distillers Dried Grains (DDGS) | Plant Proteins | Distillers dried grains with solubles | Unsplash Commercial License. |
+| `amino-acids.webp` | Feed-Grade Amino Acids | Feed Additives | Pure white crystalline amino acid powder | Unsplash Commercial License. |
+| `choline-chloride.webp` | Choline Chloride 60%/70% | Feed Additives | Corn-cob base vitamin carrier granules | Unsplash Commercial License. |
+| `mycotoxin-binders.webp` | Broad-Spectrum Mycotoxin Binders | Feed Additives | Mineral aluminosilicate binder powder | Unsplash Commercial License. |
+| `dcp.webp` | Dicalcium Phosphate (DCP 18%) | Feed Minerals | Greyish-white mineral feed phosphate | Unsplash Commercial License. |
+| `mcp.webp` | Monocalcium Phosphate (MCP 22%) | Feed Minerals | Crystalline soluble feed phosphate | Unsplash Commercial License. |
+| `rice.webp` | Commercial &amp; Specialty Rice | Food Ingredients | Clean milled white and parboiled rice | Unsplash Commercial License. |
+| `food-soybeans.webp` | Food-Grade Soybeans | Food Ingredients | Clean whole yellow food soybeans | Unsplash Commercial License. |
+| `lentils-pulses.webp` | Lentils &amp; Pulses | Food Ingredients | Machine-cleaned split red lentils | Unsplash Commercial License. |
+| `vegetable-oils.webp` | Vegetable Oils &amp; Oilseeds | Food Ingredients | Clear golden refined edible vegetable oil | Unsplash Commercial License. |
+| `pet-food-ingredients.webp` | Specialty Pet Food Ingredients | Pet Food | Low-ash poultry protein raw materials | Unsplash Commercial License. |
+| `finished-pet-food.webp` | Finished &amp; Private-Label Pet Food | Pet Food | Premium extruded dog and cat kibble | Unsplash Commercial License. |
+| `packaged-commodities.webp` | Packaged Commercial Staples | FMCG Goods | Packaged groceries and dry foodstuffs | Unsplash Commercial License. |
+
 ---
 
 ## 5. Compliance Statement
