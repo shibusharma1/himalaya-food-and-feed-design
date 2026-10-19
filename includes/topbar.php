@@ -3,7 +3,7 @@
  * Himalayan Food and Feed - Topbar Partial
  */
 ?>
-<div class="topbar py-2 px-4 hidden md:block">
+<div class="topbar py-2 px-1 hidden md:block">
   <div class="site-container flex flex-wrap items-center justify-between gap-4 text-xs">
     <div class="flex items-center gap-6">
       <span class="flex items-center gap-2 text-slate-300">

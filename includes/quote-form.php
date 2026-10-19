@@ -13,7 +13,7 @@ unset($_SESSION['flash_success'], $_SESSION['flash_error'], $_SESSION['flash_err
 
 $selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
 ?>
-<div id="quote-form-container" class="bg-white rounded-xl shadow-lg border border-slate-200 p-6 sm:p-8 lg:p-10">
+<div id="quote-form-container" class="bg-white rounded-xl shadow-lg border border-slate-200 p-5 sm:p-6 lg:p-8">
   <div class="border-b border-slate-200 pb-5 mb-6">
     <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-green bg-green-50 px-3 py-1 rounded-full mb-2">
       <i class="fa-solid fa-paper-plane"></i>

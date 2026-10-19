@@ -48,8 +48,8 @@ The primary visual identity is derived directly from the client's official busin
 ## 4. Spacing, Containers &amp; Grid
 
 ### Container System
-- Maximum layout width: `min(100% - 2.5rem, 1220px)`.
-- Left and right gutters: `1rem` on mobile, `1.5rem` on tablet, `2rem` on desktop.
+- Maximum layout width: `min(100% - 1.5rem, 1320px)`.
+- Left and right gutters: `0.5rem` on mobile, `0.75rem` on tablet/desktop (refined for optimal width utilization).
 
 ### Spacing Tokens
 - Section vertical padding: `py-16` (64px) on mobile / tablet; `py-24` (96px) on desktop.
