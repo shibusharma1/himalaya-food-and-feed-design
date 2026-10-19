@@ -1,0 +1,40 @@
+# Himalayan Food and Feed - robots.txt
+# Technical SEO & Crawler Directives
+
+User-agent: *
+Allow: /
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/images/
+
+# Disallow private handlers, configurations, and storage
+Disallow: /config/
+Disallow: /handlers/
+Disallow: /storage/
+Disallow: /docs/
+Disallow: /tests/
+Disallow: /scratch/
+Disallow: /*.log$
+Disallow: /*.env$
+
+# Allow AI-assisted answer engines and search discovery (GEO Best Practice)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap Location
+Sitemap: https://www.himalayanfoodandfeed.com/sitemap.xml

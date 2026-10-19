@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Primary Landing & Corporate Pages -->
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/about-us.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/products.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Product Category Detail Pages -->
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/products/animal-proteins.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/products/plant-proteins.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/products/feed-additives.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/products/minerals.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/products/food-ingredients.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/products/pet-food.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/products/fmcg.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Services & Trust Pages -->
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/services.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/why-choose-us.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/quality.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/markets.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/faq.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/contact.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Legal & Compliance Pages -->
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/privacy-policy.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/cookie-policy.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.himalayanfoodandfeed.com/terms.php</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 72" width="380" height="72" role="img" aria-label="Himalayan Food and Feed Logo">
+  <defs>
+    <style>
+      .brand-title { font-family: 'Montserrat', system-ui, -apple-system, sans-serif; font-weight: 800; font-size: 26px; fill: #0D2350; letter-spacing: 0.04em; }
+      .brand-sub { font-family: 'Montserrat', system-ui, -apple-system, sans-serif; font-weight: 700; font-size: 11.5px; fill: #5B8C26; letter-spacing: 0.22em; }
+    </style>
+  </defs>
+  <!-- Embedded High-Definition Client Logo Mark -->
+  <image href="logo-mark.png" x="0" y="2" width="76" height="68" preserveAspectRatio="xMidYMid meet" />
+  <!-- Wordmark -->
+  <text x="88" y="38" class="brand-title">HIMALAYAN</text>
+  <text x="89" y="55" class="brand-sub">FOOD AND FEED</text>
+  <!-- Small aesthetic accent dot -->
+  <circle cx="330" cy="51" r="2.5" fill="#F2A10F" />
+</svg>
