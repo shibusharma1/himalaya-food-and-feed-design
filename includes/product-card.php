@@ -48,13 +48,15 @@ if (isset($productCategory)):
   <div class="product-card group flex flex-col overflow-hidden bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300" data-product-category="<?= e($productItem['cat_id'] ?? '') ?>">
     <!-- Product Thumbnail Image -->
     <div class="product-img-wrapper relative aspect-[16/10] overflow-hidden bg-slate-100 border-b border-slate-100">
-      <img src="<?= asset($itemImg) ?>" 
-           alt="<?= e($productItem['name']) ?>" 
-           loading="lazy" 
-           width="640" 
-           height="400"
-           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+      <a href="<?= url('product-detail.php?id=' . urlencode($productItem['id'])) ?>" class="block w-full h-full">
+        <img src="<?= asset($itemImg) ?>" 
+             alt="<?= e($productItem['name']) ?>" 
+             loading="lazy" 
+             width="640" 
+             height="400"
+             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      </a>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent pointer-events-none"></div>
       <div class="absolute top-3 left-3">
         <span class="px-2.5 py-1 rounded bg-white/95 backdrop-blur-sm text-slate-800 text-[11px] font-bold font-heading shadow-sm inline-flex items-center gap-1.5">
           <i class="fa-solid fa-circle-check text-brand-green"></i>
@@ -70,37 +72,21 @@ if (isset($productCategory)):
 
     <div class="p-6 flex flex-col flex-grow">
       <h3 class="text-lg font-bold text-brand-navy mb-2 font-heading group-hover:text-brand-green transition-colors">
-        <?= e($productItem['name']) ?>
+        <a href="<?= url('product-detail.php?id=' . urlencode($productItem['id'])) ?>">
+          <?= e($productItem['name']) ?>
+        </a>
       </h3>
 
-      <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+      <p class="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">
         <?= e($productItem['description']) ?>
       </p>
 
-      <!-- Indicative Specifications & Applications Box -->
-      <div class="bg-slate-50 border border-slate-200 rounded-md p-3.5 mb-4 text-xs space-y-2 mt-auto">
-        <div>
-          <strong class="text-slate-900 font-heading block">Intended Application:</strong>
-          <span class="text-slate-600"><?= e($productItem['application']) ?></span>
-        </div>
-        <div class="pt-1.5 border-t border-slate-200/60">
-          <strong class="text-brand-green font-heading block">Specification Parameter:</strong>
-          <span class="text-slate-600"><?= e($productItem['specs_status']) ?></span>
-        </div>
-        <?php if (!empty($productItem['packaging'])): ?>
-          <div class="pt-1.5 border-t border-slate-200/60">
-            <strong class="text-slate-900 font-heading block">Standard Packaging:</strong>
-            <span class="text-slate-600"><?= e($productItem['packaging']) ?></span>
-          </div>
-        <?php endif; ?>
-      </div>
-
-      <!-- Actions -->
-      <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
-        <a href="<?= url('contact.php?product=' . urlencode($productItem['name']) . '&cat=' . urlencode($productItem['category'] ?? '') . '#quote-form') ?>" 
-           class="btn-primary text-xs py-2 px-3.5 w-full text-center justify-center">
-          <i class="fa-solid fa-file-pen mr-1.5"></i>
-          <span>Request Quotation</span>
+      <!-- Actions: View Details -->
+      <div class="pt-4 border-t border-slate-100 mt-auto">
+        <a href="<?= url('product-detail.php?id=' . urlencode($productItem['id'])) ?>" 
+           class="btn-primary text-xs py-2.5 px-4 w-full text-center justify-center inline-flex items-center gap-2 group-hover:bg-brand-navy-dark group-hover:text-white hover:text-white transition-colors">
+          <span>View Details</span>
+          <i class="fa-solid fa-arrow-right text-[11px] transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true"></i>
         </a>
       </div>
     </div>

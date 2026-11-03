@@ -21,9 +21,13 @@ This checklist documents all functional, visual, accessibility, and code quality
 | **TC-11** | Quote form &ndash; rate limiting | Submitting more than 5 requests in 10 minutes returns HTTP 429 rate limit error. | **PASS** |
 | **TC-12** | Form submission feedback | Valid submission returns clear success notification and safely resets the form inputs. | **PASS** |
 | **TC-13** | Back-to-top button | Becomes visible after scrolling past 350px and smoothly scrolls viewport to top when clicked. | **PASS** |
-| **TC-14** | WhatsApp action | Floating button triggers `https://wa.me/4552175666` in a new tab without blocking content. | **PASS** |
+| **TC-14** | WhatsApp action | Displays as a circular icon button normally; smoothly expands to show "WhatsApp" on hover; triggers `https://wa.me/4552175666`. | **PASS** |
 | **TC-15** | Custom 404 page | Requesting an invalid URL returns a valid 404 page and an HTTP `404 Not Found` response code. | **PASS** |
 | **TC-16** | Sitemap &amp; Robots | `sitemap.xml` returns well-formed XML; `robots.txt` contains clean crawler directives. | **PASS** |
+| **TC-17** | Heading typography scale | All page hero titles consistently utilize `text-3xl sm:text-4xl` across devices. | **PASS** |
+| **TC-18** | Service card border styling | Cards render clean, uniform 1px borders with smooth elevation and no top-border shifts. | **PASS** |
+| **TC-19** | Filter button contrast &amp; active states | Active buttons render solid high-contrast navy with bold white text; inactive buttons render crisp white with dark text. | **PASS** |
+| **TC-20** | Product Detail &amp; Inquiry Pre-Selection | Product detail page renders full technical dossier without inline form; "Request Quote and Specialization" button redirects to `contact.php#quote-form` with product, category, and inquiry template automatically pre-selected. | **PASS** |
 
 ---
 

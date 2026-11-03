@@ -16,18 +16,18 @@ $ctaSubtitle = $ctaSubtitle ?? "Send your required specification, target volume,
         <i class="fa-solid fa-handshake"></i>
         <span>Direct Sourcing &amp; Supply Coordination</span>
       </div>
-      <h2 class="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 font-heading">
+      <h2 class="text-white text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 font-heading">
         <?= e($ctaTitle) ?>
       </h2>
       <p class="text-slate-200 text-lg md:text-xl font-normal leading-relaxed mb-8 max-w-2xl">
         <?= e($ctaSubtitle) ?>
       </p>
       <div class="flex flex-wrap items-center gap-4">
-        <a href="<?= url('contact.php#quote-form') ?>" class="btn-primary text-base py-3.5 px-7">
+        <a href="<?= url('contact.php#quote-form') ?>" class="btn-primary text-base py-3 px-6">
           <i class="fa-solid fa-file-invoice text-sm"></i>
           <span>Request a Formal Quote</span>
         </a>
-        <a href="<?= CLIENT_WHATSAPP_URL ?>" target="_blank" rel="noopener noreferrer" class="btn-secondary text-base py-3.5 px-6">
+        <a href="<?= CLIENT_WHATSAPP_URL ?>" target="_blank" rel="noopener noreferrer" class="btn-secondary text-base py-3 px-6">
           <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
           <span>Chat on WhatsApp</span>
         </a>

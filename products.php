@@ -46,7 +46,7 @@ $categories = get_all_categories();
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-orange text-xs font-bold uppercase tracking-wider mb-4">
         <span>B2B Commodity &amp; Ingredient Catalog</span>
       </div>
-      <h1 class="text-white text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 font-heading">
+      <h1 class="text-white text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 font-heading">
         Our Complete Product Portfolio
       </h1>
       <p class="text-slate-200 text-lg sm:text-xl font-normal leading-relaxed">
@@ -90,18 +90,18 @@ $categories = get_all_categories();
   <div class="site-container">
     
     <!-- Filter Navigation Buttons -->
-    <div class="mb-10 flex flex-wrap items-center justify-center gap-2">
+    <div class="mb-10 flex flex-wrap items-center justify-center gap-2.5">
       <button type="button" 
               data-product-filter="all" 
               aria-selected="true"
-              class="px-4 py-2 rounded-full font-heading font-bold text-xs uppercase tracking-wider transition-colors shadow-sm bg-navy text-white">
+              class="catalog-filter-btn is-active px-4 py-2.5 rounded-full font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm border bg-brand-navy text-white border-brand-navy">
         All Products (<?= count($allProducts) ?>)
       </button>
       <?php foreach ($categories as $cat): ?>
         <button type="button" 
                 data-product-filter="<?= e($cat['id']) ?>" 
                 aria-selected="false"
-                class="px-4 py-2 rounded-full font-heading font-bold text-xs uppercase tracking-wider transition-colors shadow-sm bg-white text-ink hover:bg-slate-100">
+                class="catalog-filter-btn px-4 py-2.5 rounded-full font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm border bg-white text-brand-ink border-slate-200 hover:bg-slate-50 hover:text-brand-navy hover:border-slate-300">
           <?= e($cat['title']) ?>
         </button>
       <?php endforeach; ?>

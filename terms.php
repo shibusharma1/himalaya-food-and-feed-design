@@ -72,7 +72,7 @@ require __DIR__ . '/includes/header.php';
       <p>
         For inquiries regarding specific commercial contract clauses, please contact:
       </p>
-      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-sm">
         <strong>Himalayan Food and Feed</strong><br>
         Commercial Desk: <?= CLIENT_OFFICE_DENMARK ?><br>
         Director: Kumar Dhungel<br>

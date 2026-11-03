@@ -11,7 +11,34 @@ $formOld = $_SESSION['form_old'] ?? [];
 // Clear flash messages once rendered
 unset($_SESSION['flash_success'], $_SESSION['flash_error'], $_SESSION['flash_errors'], $_SESSION['form_old']);
 
-$selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
+$selectedCategory = $selectedCategory ?? ($_GET['cat'] ?? ($formOld['product_category'] ?? ''));
+$selectedProduct = $selectedProduct ?? ($_GET['product'] ?? '');
+
+// Auto-lookup category from product if missing
+if (!empty($selectedProduct) && empty($selectedCategory) && function_exists('find_product')) {
+    $foundProd = find_product($selectedProduct);
+    if ($foundProd) {
+        $selectedCategory = $foundProd['category'] ?? ($foundProd['cat_title'] ?? '');
+    }
+}
+
+// Pre-fill structured commercial inquiry template if a specific product was selected
+if (!empty($selectedProduct) && empty($formOld['message'])) {
+    $formOld['message'] = "Commercial Quotation & Specialization Request for " . $selectedProduct . ":\n- Target Volume / Monthly Requirement:\n- Destination Port / Preferred Incoterms (CIF / CFR / FOB):\n- Target Specification / Grade:\n- Preferred Delivery Timeline:";
+}
+
+// Category matching helper
+if (!function_exists('form_matches_cat')) {
+    function form_matches_cat(?string $selected, string $optionVal): bool {
+        if (empty($selected)) return false;
+        $s = strtolower(trim($selected));
+        $o = strtolower(trim($optionVal));
+        if ($s === $o) return true;
+        $sClean = preg_replace('/[^a-z0-9]/', '', $s);
+        $oClean = preg_replace('/[^a-z0-9]/', '', $o);
+        return str_contains($sClean, $oClean) || str_contains($oClean, $sClean);
+    }
+}
 ?>
 <div id="quote-form-container" class="bg-white rounded-xl shadow-lg border border-slate-200 p-5 sm:p-6 lg:p-8">
   <div class="border-b border-slate-200 pb-5 mb-6">
@@ -25,6 +52,18 @@ $selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
     <p class="text-slate-600 text-sm mt-1">
       Submit your ingredient requirements, required quantity, and destination port. Our director and trading desk will respond within one business day.
     </p>
+
+    <?php if (!empty($selectedProduct)): ?>
+      <div class="mt-4 p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs">
+        <div class="flex items-center gap-2 text-brand-navy">
+          <i class="fa-solid fa-certificate text-brand-green text-sm"></i>
+          <span>Enquiry for Product: <strong class="font-bold text-slate-900"><?= e($selectedProduct) ?></strong></span>
+        </div>
+        <span class="px-2.5 py-0.5 rounded bg-brand-navy text-white font-heading font-bold uppercase tracking-wider text-[10px]">
+          Pre-Selected
+        </span>
+      </div>
+    <?php endif; ?>
   </div>
 
   <!-- Dynamic / Server Flash Message Box -->
@@ -74,7 +113,7 @@ $selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
                maxlength="100"
                value="<?= e($formOld['name'] ?? '') ?>"
                placeholder="e.g. John Doe"
-               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange text-slate-900 transition-colors <?= isset($flashErrors['name']) ? 'border-red-500' : '' ?>">
+               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:border-brand-orange text-slate-900 transition-colors <?= isset($flashErrors['name']) ? 'border-red-500' : '' ?>">
         <?php if (isset($flashErrors['name'])): ?>
           <p class="text-red-600 text-xs mt-1 font-semibold"><?= e($flashErrors['name']) ?></p>
         <?php endif; ?>
@@ -92,7 +131,7 @@ $selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
                maxlength="120"
                value="<?= e($formOld['email'] ?? '') ?>"
                placeholder="name@company.com"
-               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange text-slate-900 transition-colors <?= isset($flashErrors['email']) ? 'border-red-500' : '' ?>">
+               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:border-brand-orange text-slate-900 transition-colors <?= isset($flashErrors['email']) ? 'border-red-500' : '' ?>">
         <?php if (isset($flashErrors['email'])): ?>
           <p class="text-red-600 text-xs mt-1 font-semibold"><?= e($flashErrors['email']) ?></p>
         <?php endif; ?>
@@ -112,7 +151,7 @@ $selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
                maxlength="150"
                value="<?= e($formOld['company'] ?? '') ?>"
                placeholder="Feed Mill / Trading Co."
-               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange text-slate-900 transition-colors">
+               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:border-brand-orange text-slate-900 transition-colors">
       </div>
 
       <div>
@@ -126,7 +165,7 @@ $selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
                maxlength="30"
                value="<?= e($formOld['phone'] ?? '') ?>"
                placeholder="+45 ... or international code"
-               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange text-slate-900 transition-colors">
+               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:border-brand-orange text-slate-900 transition-colors">
       </div>
     </div>
 
@@ -138,16 +177,16 @@ $selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
       <select id="select-category" 
               name="product_category" 
               required
-              class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange text-slate-900 transition-colors <?= isset($flashErrors['product_category']) ? 'border-red-500' : '' ?>">
+              class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:border-brand-orange text-slate-900 transition-colors <?= isset($flashErrors['product_category']) ? 'border-red-500' : '' ?>">
         <option value="">-- Please Select Product Line --</option>
-        <option value="Animal Proteins" <?= $selectedCategory === 'Animal Proteins' ? 'selected' : '' ?>>Animal Proteins (MBM, Poultry Meal, Fish Meal, Feather Meal)</option>
-        <option value="Plant Proteins" <?= $selectedCategory === 'Plant Proteins' ? 'selected' : '' ?>>Plant Proteins (Soybean Meal, Corn Gluten Meal, DDGS)</option>
-        <option value="Feed Additives" <?= $selectedCategory === 'Feed Additives' ? 'selected' : '' ?>>Feed Additives (Amino Acids, Choline Chloride, Binders)</option>
-        <option value="Feed Minerals" <?= $selectedCategory === 'Feed Minerals' ? 'selected' : '' ?>>Feed Minerals (DCP 18%, MCP 22%)</option>
-        <option value="Food Ingredients & Grains" <?= $selectedCategory === 'Food Ingredients & Grains' ? 'selected' : '' ?>>Food Ingredients &amp; Grains (Rice, Soybeans, Lentils, Oils)</option>
-        <option value="Pet Food Ingredients" <?= $selectedCategory === 'Pet Food Ingredients' ? 'selected' : '' ?>>Pet Food Ingredients &amp; Formulation</option>
-        <option value="FMCG Goods" <?= $selectedCategory === 'FMCG Goods' ? 'selected' : '' ?>>FMCG Packaged Goods</option>
-        <option value="General Commercial Enquiry" <?= $selectedCategory === 'General Commercial Enquiry' ? 'selected' : '' ?>>General Commercial / Trade Partnership</option>
+        <option value="Animal Proteins" <?= form_matches_cat($selectedCategory, 'Animal Proteins') ? 'selected' : '' ?>>Animal Proteins (MBM, Poultry Meal, Fish Meal, Feather Meal)</option>
+        <option value="Plant Proteins" <?= form_matches_cat($selectedCategory, 'Plant Proteins') ? 'selected' : '' ?>>Plant Proteins (Soybean Meal, Corn Gluten Meal, DDGS)</option>
+        <option value="Feed Additives" <?= form_matches_cat($selectedCategory, 'Feed Additives') ? 'selected' : '' ?>>Feed Additives (Amino Acids, Choline Chloride, Binders)</option>
+        <option value="Feed Minerals" <?= form_matches_cat($selectedCategory, 'Feed Minerals') ? 'selected' : '' ?>>Feed Minerals (DCP 18%, MCP 22%)</option>
+        <option value="Food Ingredients & Grains" <?= form_matches_cat($selectedCategory, 'Food Ingredients & Grains') ? 'selected' : '' ?>>Food Ingredients &amp; Grains (Rice, Soybeans, Lentils, Oils)</option>
+        <option value="Pet Food Ingredients" <?= form_matches_cat($selectedCategory, 'Pet Food Ingredients') ? 'selected' : '' ?>>Pet Food Ingredients &amp; Formulation</option>
+        <option value="FMCG Goods" <?= form_matches_cat($selectedCategory, 'FMCG Goods') ? 'selected' : '' ?>>FMCG Packaged Goods</option>
+        <option value="General Commercial Enquiry" <?= form_matches_cat($selectedCategory, 'General Commercial Enquiry') ? 'selected' : '' ?>>General Commercial / Trade Partnership</option>
       </select>
       <?php if (isset($flashErrors['product_category'])): ?>
         <p class="text-red-600 text-xs mt-1 font-semibold"><?= e($flashErrors['product_category']) ?></p>
@@ -166,7 +205,7 @@ $selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
                maxlength="100"
                value="<?= e($formOld['quantity'] ?? '') ?>"
                placeholder="e.g. 50 Metric Tons / 2 FCL"
-               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange text-slate-900 transition-colors">
+               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:border-brand-orange text-slate-900 transition-colors">
       </div>
 
       <div>
@@ -179,7 +218,7 @@ $selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
                maxlength="150"
                value="<?= e($formOld['destination'] ?? '') ?>"
                placeholder="e.g. CIF Port of Rotterdam or FOB"
-               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange text-slate-900 transition-colors">
+               class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:border-brand-orange text-slate-900 transition-colors">
       </div>
     </div>
 
@@ -194,7 +233,7 @@ $selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
                 required 
                 maxlength="4000"
                 placeholder="Specify your required parameters (e.g. minimum protein %, moisture limit, packaging preferences, delivery schedule, or sample requirements)..."
-                class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange text-slate-900 transition-colors <?= isset($flashErrors['message']) ? 'border-red-500' : '' ?>"><?= e($formOld['message'] ?? '') ?></textarea>
+                class="w-full px-4 py-2.5 rounded-md border border-slate-300 focus:border-brand-orange text-slate-900 transition-colors <?= isset($flashErrors['message']) ? 'border-red-500' : '' ?>"><?= e($formOld['message'] ?? '') ?></textarea>
       <?php if (isset($flashErrors['message'])): ?>
         <p class="text-red-600 text-xs mt-1 font-semibold"><?= e($flashErrors['message']) ?></p>
       <?php endif; ?>
@@ -218,7 +257,7 @@ $selectedCategory = $selectedCategory ?? ($formOld['product_category'] ?? '');
 
     <!-- Submit Button & Assurances -->
     <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <button type="submit" class="btn-primary w-full sm:w-auto py-3.5 px-8 text-base">
+      <button type="submit" class="btn-primary w-full sm:w-auto py-3 px-6 text-base">
         <i class="fa-solid fa-paper-plane text-sm"></i>
         <span>Send Enquiry for Quotation</span>
       </button>

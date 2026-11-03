@@ -75,7 +75,7 @@ require __DIR__ . '/includes/header.php';
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-orange text-xs font-bold uppercase tracking-wider mb-4">
         <span>Buyer Knowledge Base</span>
       </div>
-      <h1 class="text-white text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 font-heading">
+      <h1 class="text-white text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 font-heading">
         Frequently Asked Questions
       </h1>
       <p class="text-slate-200 text-lg sm:text-xl font-normal leading-relaxed">

@@ -35,7 +35,7 @@ The primary visual identity is derived directly from the client's official busin
 - **Body Copy, Contact Info, Forms &amp; Specifications:** `Source Sans 3`, sans-serif (Weights: 400 Regular, 600 Semi-Bold, 700 Bold).
 
 ### Typographic Scale
-- **H1 (Hero / Page Title):** `clamp(2.25rem, 4.5vw, 3.75rem)` (36px &ndash; 60px), Line Height: 1.15, Weight: 800.
+- **H1 (Hero / Page Title):** `text-3xl sm:text-4xl` (`1.875rem` &ndash; `2.25rem` / 30px &ndash; 36px on tablet and desktop), Line Height: 1.2, Weight: 800. Standardized across all page hero banners for a compact, balanced corporate presentation.
 - **H2 (Section Headings):** `clamp(1.75rem, 3.2vw, 2.5rem)` (28px &ndash; 40px), Line Height: 1.2, Weight: 700. Features a dedicated 54px &times; 4px brand-green accent rule.
 - **H3 (Card Headings &amp; Sub-sections):** `clamp(1.2rem, 2vw, 1.5rem)` (19px &ndash; 24px), Line Height: 1.25, Weight: 700.
 - **Lead Paragraph:** `1.1875rem` (19px), Line Height: 1.7, Color: `#54607A`.
@@ -69,16 +69,28 @@ The primary visual identity is derived directly from the client's official busin
 - **Green Accent Button (`.btn-green`):** Solid `#5B8C26` with `#FFFFFF` text. Used for "Learn More" and WhatsApp contact triggers.
 - **Outline Navy Button (`.btn-outline-navy`):** Transparent with `2px solid #0D2350` border.
 
+### Interactive Catalog Filter Buttons (`.catalog-filter-btn`)
+- **Active State (`[aria-selected="true"]` / `.is-active`):** High-contrast solid Corporate Navy (`#0D2350`, `var(--color-navy)`), crisp white text (`#FFFFFF`), matching `#0D2350` border, and prominent shadow `0 4px 14px rgba(13, 35, 80, 0.25)`. On hover, background deepens to `#071533` with white text, preventing low-contrast washed-out states.
+- **Inactive State (`[aria-selected="false"]`):** Clean `#FFFFFF` background with `#132040` (`var(--color-ink)`) text and `#DBE1EC` border. On hover, transitions to `#F8FAFC` background with `#0D2350` text and `#CBD5E1` border.
+- **Accessibility:** Full `aria-selected` synchronization, keyboard focus indicators, and smooth 200ms transitions.
+
 ### Product &amp; Service Cards
-- Clean `#FFFFFF` surface with subtle `1px solid #DBE1EC` border.
-- Distinctive top border: `4px solid #5B8C26` (Green), turning `#F2A10F` (Orange) on hover.
-- Images have an aspect ratio of `16:10` with subtle zoom scale on card hover.
+- **Service Cards (`.service-card`):** Clean `#FFFFFF` surface with a uniform `1px solid #DBE1EC` border on all four sides. Features smooth hover elevation (`transform: translateY(-4px); box-shadow: var(--shadow-card)`). Colored top borders and top-border hover transitions were deliberately removed for a restrained, modern, and uncluttered enterprise trading aesthetic.
+- **Product Cards (`.product-card`):** Dedicated `16:10` aspect ratio photography (`assets/images/products/items/*.webp`), lot-verified micro-badges (`COA Verified`, `Vetted Supply`), clear product heading and short description, and dedicated "View Details" action with animated directional indicator. Cluttered technical specifications are moved to the dedicated `product-detail.php` dossier.
+- **Product Detail Layout (`product-detail.php`):** Two-column enterprise view featuring hero breadcrumb navigation, lot verification status, high-resolution imagery, logistics and containerized supply parameters, director contact card, structured indicative technical specification table, commercial disclaimer alert, export documentation pack checklist, and pre-filled inquiry form.
 
 ### Director Badge Card
 - High-contrast Navy (`#0D2350`) background with a prominent `12px solid #5B8C26` right border, inspired by the client's business card angle.
 
 ### Angular Brand Separators
 - Sections featuring `.brand-skew-divider` display a subtle diagonal brand stripe at `54%` width skewed at `-14deg` in `#5B8C26` at `0.85` opacity on desktop screens, reinforcing the client's business card geometry.
+
+### Floating Action Controls
+- **Floating WhatsApp Button (`.whatsapp-float`):**
+  - **Default (Idle) State:** Compact 52px circular action button showing only the WhatsApp icon (`fa-brands fa-whatsapp`).
+  - **Hover / Focus State:** Smoothly expands horizontally into a rounded pill revealing the "WhatsApp" text label with a subtle `-3px` lift and enhanced drop shadow (`0 8px 24px rgba(37, 211, 102, 0.5)`).
+  - **Mobile State (`≤640px`):** Renders as a dedicated 48px circle with the text hidden to preserve viewport space and touch ergonomics.
+- **Back to Top Button (`.back-to-top`):** Pinned at `bottom: 80px` (above the WhatsApp button), smoothly fading and translating in when scrolled past 350px.
 
 ---
 

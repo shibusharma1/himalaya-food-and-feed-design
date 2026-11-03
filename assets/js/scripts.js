@@ -213,8 +213,8 @@ function initBackToTop() {
             behavior: 'smooth'
         });
         // Move focus to skip link or body top for keyboard users
-        const skipLink = document.querySelector('.skip-link');
-        if (skipLink) skipLink.focus();
+        // const skipLink = document.querySelector('.skip-link');
+        // if (skipLink) skipLink.focus();
     });
 }
 
@@ -233,12 +233,12 @@ function initProductFilter() {
 
             // Update active button state
             filterButtons.forEach(b => {
-                b.classList.remove('bg-navy', 'text-white');
-                b.classList.add('bg-white', 'text-ink');
+                b.classList.remove('is-active', 'bg-brand-navy', 'text-white', 'border-brand-navy');
+                b.classList.add('bg-white', 'text-brand-ink', 'border-slate-200');
                 b.setAttribute('aria-selected', 'false');
             });
-            btn.classList.remove('bg-white', 'text-ink');
-            btn.classList.add('bg-navy', 'text-white');
+            btn.classList.remove('bg-white', 'text-brand-ink', 'border-slate-200');
+            btn.classList.add('is-active', 'bg-brand-navy', 'text-white', 'border-brand-navy');
             btn.setAttribute('aria-selected', 'true');
 
             // Filter items with smooth transition

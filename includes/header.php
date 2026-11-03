@@ -62,7 +62,7 @@ $currentPageKey = $currentPageKey ?? 'home';
 </head>
 <body class="bg-brand-bg text-brand-ink antialiased flex flex-col min-h-screen">
   <!-- Skip to Content for Keyboard & Screen Reader Accessibility -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- <a href="#main-content" class="skip-link">Skip to main content</a> -->
 
   <!-- Brand Loading Animation (Dismisses gracefully on load) -->
   <?php require __DIR__ . '/loader.php'; ?>

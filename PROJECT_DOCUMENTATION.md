@@ -9,6 +9,7 @@ himalayan-food-and-feed/
 |-- index.php                      # Homepage (Hero, Product Lines, Sourcing Model, FAQ, CTA)
 |-- about-us.php                   # Corporate Story, Mission, Values, Commercial Leadership
 |-- products.php                   # Filterable Interactive Catalog & Category Overview
+|-- product-detail.php             # Comprehensive Single Product Dossier, Parameters & Specs
 |-- services.php                   # Sourcing, Verification, Ocean Freight, Formulation Support
 |-- why-choose-us.php              # Six Verified Business Strengths
 |-- quality.php                    # Quality Assurance Framework, Lab Testing, Documents
@@ -122,3 +123,60 @@ Every page follows a standardized server-side composition pattern:
 4. **Rate Limiting:** Form submissions are tracked per session timestamp window (max 5 submissions per 10 minutes) returning HTTP `429 Too Many Requests` on abuse.
 5. **Header Injection Prevention:** Newline characters (`\r` and `\n`) are stripped from all email headers (`From`, `Reply-To`, `Subject`).
 6. **Error Suppression in Production:** `display_errors` is disabled by default in `config/app.php` with `log_errors` enabled to prevent exposing server paths or environment details.
+
+---
+
+## 4. UI &amp; Design System Revisions Log
+
+The following visual and structural refinements have been applied across the codebase:
+
+1. **Heading Typography Scale (`text-4xl` Standardization):**
+   - Converted all hero banner and section title `text-5xl` and `lg:text-[3.25rem]` classes across all 18 templates (`index.php`, `about-us.php`, `contact.php`, `faq.php`, `markets.php`, `products.php`, all 7 category detail pages, `quality.php`, `services.php`, `why-choose-us.php`, `includes/cta-section.php`, and `404.php`) to `text-4xl` (`text-white text-3xl sm:text-4xl lg:text-4xl font-extrabold tracking-tight leading-[1.15] font-heading`).
+   - Improves typographic balance, prevents awkward headline line wraps on laptops/tablets, and produces a more restrained corporate B2B feel.
+
+2. **Clean, Borderless-Top Service Cards:**
+   - Removed all `border-t-4 !border-t-brand-*` utility classes from `.service-card` elements in `about-us.php`.
+   - Removed the default `border-top` declaration and hover `border-top-color` rule from `.service-card` in `assets/css/style.css`.
+   - Cards now feature a consistent 1px structural outline with subtle hover lift and box shadow, aligning with international trade website standards.
+
+3. **Container Max-Width &amp; Side Spacing:**
+   - Standardized layout container to `--container-max: min(100% - 1.5rem, 1320px)` with tightened horizontal gutters (`0.5rem` / `0.75rem`), optimizing content density while preserving responsive margins across all viewports.
+
+4. **Product Item Photography:**
+   - Sourced and optimized 19 dedicated B2B commodity WebP images under `assets/images/products/items/` at 16:10 aspect ratio.
+   - Wired each image into `config/products.php` with cache-busting `asset()` helpers across `includes/product-card.php` and the 7 product category views.
+
+5. **Catalog Filter Button Contrast &amp; Active Visibility:**
+   - Corrected filter button styling on `products.php` and `assets/js/scripts.js` from unconfigured `bg-navy` / `text-ink` to genuine brand utility classes (`bg-brand-navy`, `text-brand-ink`).
+   - Implemented `.catalog-filter-btn` in `assets/css/style.css` with high-contrast `[aria-selected="true"]` and `.is-active` rules: solid Corporate Navy background (`#0D2350`), pure white text (`#FFFFFF`), active border, and shadow.
+   - Enforced high-contrast active hover states (`#071533` with white text), resolving the previous issue where active buttons appeared faint or transparent on light backgrounds.
+
+6. **Floating WhatsApp Action Hover Expansion:**
+   - Redesigned `.whatsapp-float` in `assets/css/style.css` so that it displays as a sleek 52px circular icon button by default.
+   - On desktop hover or focus, smoothly animates horizontally into an expanded pill revealing the bold "WhatsApp" label, while gracefully collapsing on mobile screens (`≤640px`) to preserve touch screen estate.
+
+7. **Dedicated Product Detail Pages & Card Streamlining:**
+   - Streamlined product cards on category pages (`products/animal-proteins.php`, `plant-proteins.php`, etc.) and `includes/product-card.php` (`products.php`), removing the cluttered outside specifications box.
+   - Preserved core card elements: 16:10 product image, status badges (`COA Verified`, `Vetted Supply`), product name, short description, and dedicated "View Details" button with animated arrow icon.
+   - Built a comprehensive, high-end single product dossier template `product-detail.php` (with canonical 301 rewrites configured in `.htaccess`):
+     - Enterprise hero header with breadcrumbs, lot verification badges, and direct commercial CTAs.
+     - Two-column technical dossier featuring high-resolution photography, sourcing network details (Denmark / Singapore), logistics overview (CIF / CFR / FOB, packaging, container loads), and direct trader contact card for Director Kumar Dhungel.
+     - Structured B2B technical parameter table, target applications breakdown, commercial grades, export documentation checklist, and related products showcase.
+     - High-impact "Request Quote and Specialization" commercial action redirecting to `contact.php#quote-form` with the specific product, matching category, and structured inquiry draft automatically pre-selected.
+     - Full JSON-LD `Product` schema generation in `config/seo.php` and sitemap indexing across all 19 catalog items.
+
+8. **Product Detail CTA Optimization & Full Mobile Responsiveness:**
+   - Standardized the primary "Request Quote and Specialization" button placed right after the Export Documentation section on `product-detail.php`.
+   - Optimized typography with responsive scaling (`text-sm sm:text-base md:text-lg`), comfortable fluid padding (`py-3.5 sm:py-4 px-5 sm:px-8 md:px-10`), and `leading-snug sm:leading-normal`.
+   - Configured layout to `w-full sm:w-auto inline-flex items-center justify-center` so it renders as a comfortable full-width touch element on mobile phones (< 640px) while maintaining clean left-aligned enterprise proportions on tablets and desktop monitors.
+   - Applied `shrink-0` to leading (`fa-file-invoice`) and trailing animated (`fa-arrow-right`) icons, preventing flex distortion on narrow viewports (320px–375px) and ensuring zero horizontal scroll overflow across all screen sizes.
+
+9. **Vertical Section Spacing Optimization:**
+   - Replaced oversized section padding on `product-detail.php` (`py-14 sm:py-18 lg:py-24`, which previously introduced up to 96px of vertical void) with an architecturally balanced scale: `py-8 sm:py-10 lg:py-12` (32px mobile / 40px tablet / 48px desktop).
+   - Brings the product photograph, trading desks information, and technical specification cards above the fold on desktop and immediately accessible without excessive scrolling on mobile.
+   - Harmonized the adjacent Related Products showcase section to `py-10 sm:py-12 lg:py-14`, establishing cohesive vertical rhythm throughout the dossier.
+
+10. **View Details Button Hover Contrast & Text Inversion:**
+    - Added `group-hover:text-white hover:text-white` to all `.btn-primary` "View Details" action buttons across `includes/product-card.php`, `product-detail.php`, and all 7 category pages (`products/*.php`).
+    - Enforced a corresponding global stylesheet rule in `assets/css/style.css` (`.product-card:hover .btn-primary, .product-card .btn-primary:hover`) guaranteeing high-contrast white text (`#FFFFFF`) against the dark corporate navy hover background (`#071533`).
+    - Eliminates low-contrast dark-on-dark text rendering when product cards or buttons enter hover/focus states.

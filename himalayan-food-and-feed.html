@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Himalayan Food and Feed</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --surface: #fff;
+        --ink: #132040;
+        --muted: #54607a;
+        --navy: #0d2350;
+        --green: #5b8c26;
+        --orange: #f2a10f;
+        --line: #dbe1ec;
+        --hd: #fff;
+        --hdink: #0d2350;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0a1430;
+          --surface: #101d42;
+          --ink: #e8edf8;
+          --muted: #a3b0cc;
+          --line: #25335c;
+          --hd: #0a1430;
+          --hdink: #fff;
+          --green: #82b545;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #0a1430;
+        --surface: #101d42;
+        --ink: #e8edf8;
+        --muted: #a3b0cc;
+        --line: #25335c;
+        --hd: #0a1430;
+        --hdink: #fff;
+        --green: #82b545;
+      }
+      html {
+        scroll-padding-top: env(safe-area-inset-top, 0px);
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          400 17px/1.6 "Source Sans 3",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Montserrat, "Trebuchet MS", system-ui, sans-serif;
+        line-height: 1.15;
+        margin: 0 0 0.5em;
+      }
+      a {
+        color: inherit;
+      }
+      :focus-visible {
+        outline: 3px solid var(--orange);
+        outline-offset: 3px;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 22px;
+      }
+      header {
+        position: sticky;
+        top: env(safe-area-inset-top, 0px);
+        z-index: 10;
+        background: var(--hd);
+        color: var(--hdink);
+        border-bottom: 3px solid var(--green);
+      }
+      header .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding-block: 6px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+      .brand img {
+        height: 54px;
+        width: auto;
+        background: #fff;
+        border-radius: 8px;
+        padding: 2px;
+      }
+      .wm {
+        font:
+          800 22px/1 Montserrat,
+          sans-serif;
+        letter-spacing: 0.02em;
+        color: var(--hdink);
+      }
+      .wm small {
+        display: block;
+        font:
+          700 11.5px/1.5 Montserrat,
+          sans-serif;
+        color: var(--green);
+        letter-spacing: 0.14em;
+        margin-top: 3px;
+      }
+      nav {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      nav a {
+        text-decoration: none;
+        font:
+          600 14.5px Montserrat,
+          sans-serif;
+        padding: 6px 0;
+        border-bottom: 3px solid transparent;
+      }
+      nav a:hover,
+      nav a.on {
+        border-color: var(--orange);
+      }
+      .hero {
+        background: var(--navy);
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero .wrap {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 30px;
+        align-items: center;
+        padding-block: 58px;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 56%;
+        width: 14px;
+        background: var(--green);
+        transform: skewX(-14deg);
+        opacity: 0.9;
+      }
+      .hero .in {
+        position: relative;
+        z-index: 1;
+      }
+      .crumb {
+        font-size: 14px;
+        opacity: 0.8;
+        margin-bottom: 8px;
+      }
+      .crumb a {
+        text-decoration: none;
+      }
+      .hero h1 {
+        font-size: clamp(30px, 5vw, 52px);
+        font-weight: 800;
+      }
+      .hero p {
+        font-size: 19px;
+        opacity: 0.92;
+        max-width: 50ch;
+      }
+      .hero .art {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        position: relative;
+        z-index: 1;
+      }
+      .sect {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      .sect li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font:
+          700 14px Montserrat,
+          sans-serif;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        padding: 9px 14px;
+      }
+      .sect i {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--orange);
+        flex: none;
+      }
+      .sect li:nth-child(3n + 1) i {
+        background: var(--green);
+      }
+      .sect li:nth-child(3n + 2) i {
+        background: #fff;
+      }
+      .btns {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 22px;
+        border-radius: 6px;
+        font:
+          700 15px Montserrat,
+          sans-serif;
+        text-decoration: none;
+        border: 2px solid var(--orange);
+        cursor: pointer;
+        color: inherit;
+        background: none;
+      }
+      .btn.p {
+        background: var(--orange);
+        color: #0d2350;
+      }
+      .btn.g {
+        background: var(--green);
+        border-color: var(--green);
+        color: #fff;
+      }
+      .btn:hover {
+        filter: brightness(1.1);
+      }
+      section {
+        padding: 56px 0;
+      }
+      .lead {
+        max-width: 64ch;
+        color: var(--muted);
+        font-size: 18px;
+      }
+      h2 {
+        font-size: clamp(24px, 3.6vw, 34px);
+        color: var(--ink);
+      }
+      h2:after {
+        content: "";
+        display: block;
+        width: 56px;
+        height: 4px;
+        background: var(--green);
+        margin-top: 10px;
+      }
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+      .g3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .g2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .g4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 24px;
+        text-decoration: none;
+        display: block;
+        border-top: 4px solid var(--green);
+      }
+      .card:nth-child(3n + 2) {
+        border-top-color: var(--navy);
+      }
+      .card:nth-child(3n) {
+        border-top-color: var(--orange);
+      }
+      a.card:hover {
+        box-shadow: 0 6px 18px rgba(13, 35, 80, 0.15);
+      }
+      .card h3 {
+        font-size: 18px;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+      }
+      .tile {
+        padding: 0;
+        overflow: hidden;
+      }
+      .tile .art {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .tile div {
+        padding: 18px 24px 24px;
+      }
+      .ic {
+        width: 44px;
+        height: 44px;
+        color: var(--green);
+        margin-bottom: 8px;
+      }
+      .alt {
+        background: var(--surface);
+        border-block: 1px solid var(--line);
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .steps div {
+        padding-top: 14px;
+        border-top: 5px solid var(--orange);
+      }
+      .steps b {
+        font:
+          800 19px Montserrat,
+          sans-serif;
+        display: block;
+      }
+      .spec {
+        font-size: 14px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        margin-top: 12px;
+        padding-top: 10px;
+      }
+      details {
+        border-top: 1px solid var(--line);
+        padding: 14px 0;
+      }
+      details:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+      details p {
+        margin: 0.6em 0 0;
+        color: var(--muted);
+      }
+      .two {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 44px;
+        align-items: start;
+      }
+      .facts {
+        border-left: 5px solid var(--green);
+        padding-left: 20px;
+        display: grid;
+        gap: 16px;
+      }
+      .facts b {
+        display: block;
+        font:
+          800 19px Montserrat,
+          sans-serif;
+      }
+      .facts span {
+        color: var(--muted);
+        font-size: 15px;
+      }
+      form {
+        display: grid;
+        gap: 12px;
+      }
+      label {
+        font-size: 15px;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 11px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--line);
+        font: inherit;
+        background: var(--surface);
+        color: var(--ink);
+      }
+      textarea {
+        min-height: 110px;
+      }
+      .dcard {
+        background: var(--navy);
+        color: #fff;
+        border-radius: 12px;
+        padding: 26px;
+        border-right: 12px solid var(--green);
+      }
+      .dcard h3 {
+        margin: 0;
+      }
+      .dcard .role {
+        color: #9fd15a;
+        font:
+          700 14px Montserrat,
+          sans-serif;
+        margin-bottom: 14px;
+      }
+      .dcard a {
+        display: block;
+        text-decoration: none;
+        padding: 6px 0;
+      }
+      .dcard a:hover {
+        text-decoration: underline;
+      }
+      .cta {
+        background: var(--navy);
+        color: #fff;
+      }
+      .cta .lead {
+        color: #fff;
+        opacity: 0.85;
+      }
+      .cta h2 {
+        color: #fff;
+      }
+      footer {
+        background: var(--navy);
+        color: #fff;
+        padding: 40px 0 24px;
+        font-size: 15px;
+        border-top: 5px solid var(--green);
+      }
+      footer .wrap {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 28px;
+      }
+      footer a {
+        display: block;
+        text-decoration: none;
+        opacity: 0.85;
+        padding: 2px 0;
+      }
+      footer a:hover {
+        opacity: 1;
+      }
+      footer small {
+        grid-column: 1/-1;
+        opacity: 0.6;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        padding-top: 14px;
+      }
+      .wa {
+        position: fixed;
+        right: 18px;
+        bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+        background: #25a244;
+        color: #fff;
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+        z-index: 20;
+      }
+      @media (max-width: 860px) {
+        .hero .wrap,
+        .two,
+        .g3,
+        .g2,
+        .g4,
+        .steps,
+        footer .wrap {
+          grid-template-columns: 1fr;
+        }
+        .hero:after {
+          display: none;
+        }
+        section {
+          padding: 42px 0;
+        }
+        .wm {
+          font-size: 18px;
+        }
+      }
+      @media (min-width: 861px) and (max-width: 1000px) {
+        .g4 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <a class="brand" href="#/home" id="lg"></a>
+        <nav id="nav" aria-label="Main"></nav>
+      </div>
+    </header>
+    <main id="app"></main>
+    <footer>
+      <div class="wrap">
+        <div>
+          <a
+            class="brand"
+            href="#/home"
+            id="lg2"
+            style="margin-bottom: 12px; color: #fff"
+          ></a
+          >Feed, food and pet food ingredients for buyers worldwide. Offices in
+          Denmark and Singapore.
+        </div>
+        <div>
+          <b>Pages</b><a href="#/about">About us</a
+          ><a href="#/products">Products</a><a href="#/services">Services</a
+          ><a href="#/why">Why choose us</a><a href="#/contact">Contact</a>
+        </div>
+        <div>
+          <b>Reach us</b
+          ><a href="mailto:kumar@himalayanfoodandfeed.com"
+            >kumar@himalayanfoodandfeed.com</a
+          ><a href="tel:+4552175666">+45 52 17 56 66</a
+          ><a href="#/contact">Saven 2630, Denmark</a>
+        </div>
+        <small
+          >&copy; 2026 Himalayan Food and Feed. Demo design: product
+          specifications are indicative and text is draft copy.</small
+        >
+      </div>
+    </footer>
+    <a class="wa" href="https://wa.me/4552175666" target="_blank" rel="noopener"
+      >Chat on WhatsApp</a
+    >
+    <script>
+      const LOGO =
+        '<img src="data:image/jpeg;base64,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" alt="Himalayan Food and Feed logo">';
+      const NAME =
+        '<span class="wm">HIMALAYAN<small>FOOD AND FEED</small></span>';
+      const IC = {
+        sack: '<path d="M14 6h12l-2 6c6 3 9 9 9 16 0 5-3 8-13 8S7 33 7 28c0-7 3-13 9-16z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M16 22h8M20 18v8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>',
+        bean: '<ellipse cx="15" cy="20" rx="7" ry="11" transform="rotate(-25 15 20)" fill="none" stroke="currentColor" stroke-width="2.4"/><ellipse cx="27" cy="22" rx="7" ry="11" transform="rotate(25 27 22)" fill="none" stroke="currentColor" stroke-width="2.4"/>',
+        grain:
+          '<path d="M20 36V10M20 16c-5 0-7-3-7-7 5 0 7 3 7 7zm0 0c5 0 7-3 7-7-5 0-7 3-7 7zm0 8c-5 0-7-3-7-7 5 0 7 3 7 7zm0 0c5 0 7-3 7-7-5 0-7 3-7 7zm0 8c-5 0-7-3-7-7 5 0 7 3 7 7zm0 0c5 0 7-3 7-7-5 0-7 3-7 7z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>',
+        drop: '<path d="M20 5C14 14 9 19 9 26a11 11 0 0 0 22 0c0-7-5-12-11-21z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>',
+        flask:
+          '<path d="M15 5h10M17 5v10L8 32a3 3 0 0 0 3 4h18a3 3 0 0 0 3-4L23 15V5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M13 27h14" stroke="currentColor" stroke-width="2.4"/>',
+        bowl: '<path d="M5 18h30c0 9-6 15-15 15S5 27 5 18z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="14" cy="11" r="2.4" fill="currentColor"/><circle cx="20" cy="8" r="2.4" fill="currentColor"/><circle cx="26" cy="11" r="2.4" fill="currentColor"/>',
+        cart: '<path d="M4 8h5l4 18h18l3-13H11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="16" cy="32" r="2.6" fill="currentColor"/><circle cx="28" cy="32" r="2.6" fill="currentColor"/>',
+      };
+      const ic = (k) =>
+        `<svg class="ic" viewBox="0 0 40 40" aria-hidden="true">${IC[k]}</svg>`;
+      const SKY =
+        '<rect width="400" height="260" fill="#dfe8f5"/><circle cx="312" cy="60" r="26" fill="#f2a10f"/><path d="M0 190l70-80 50 55 70-100 90 110 50-40 70 60v65H0z" fill="#8fa3c8"/><path d="M0 220l90-55 80 45 80-60 150 80v30H0z" fill="#0d2350"/>';
+      const ART = {
+        feed: `<svg class="art" viewBox="0 0 400 260" role="img" aria-label="Feed silo and sacks">${SKY}<rect x="70" y="120" width="46" height="110" fill="#e8eef8"/><path d="M70 120a23 23 0 0 1 46 0z" fill="#fff"/><path d="M76 140h34M76 160h34M76 180h34" stroke="#8fa3c8" stroke-width="3"/><path d="M150 232l6-38h38l6 38z" fill="#f2a10f"/><path d="M204 232l6-30h34l6 30z" fill="#5b8c26"/><rect y="230" width="400" height="30" fill="#0a1a3d"/></svg>`,
+        food: `<svg class="art" viewBox="0 0 400 260" role="img" aria-label="Terraced rice fields">${SKY}<g fill="none" stroke-width="10"><path d="M0 200q100-30 400-10" stroke="#3f7a2a"/><path d="M0 222q120-30 400-8" stroke="#5b8c26"/><path d="M0 244q140-30 400-6" stroke="#f2a10f"/></g></svg>`,
+        petfood: `<svg class="art" viewBox="0 0 400 260" role="img" aria-label="Pet food bowl">${SKY}<path d="M110 170h180c0 40-36 66-90 66s-90-26-90-66z" fill="#f2a10f"/><ellipse cx="200" cy="170" rx="90" ry="14" fill="#8a5a12"/><g fill="#fff"><ellipse cx="200" cy="96" rx="22" ry="18"/><circle cx="168" cy="78" r="10"/><circle cx="232" cy="78" r="10"/><circle cx="188" cy="58" r="9"/><circle cx="212" cy="58" r="9"/></g></svg>`,
+      };
+      const P = {
+        feed: {
+          t: "Feed",
+          d: "Proteins, minerals and additives for poultry, swine, cattle and aqua feed mills.",
+          items: [
+            [
+              "Animal proteins",
+              "sack",
+              "Meat and bone meal, poultry meal, fish meal and feather meal for high-protein rations.",
+              "Crude protein about 45 to 65% by type",
+            ],
+            [
+              "Soybean meal",
+              "bean",
+              "A standard plant protein for balanced poultry, swine and cattle feed.",
+              "Crude protein 44 to 48%",
+            ],
+            [
+              "DDGS",
+              "grain",
+              "Distillers dried grains with solubles: a cost-effective protein and energy source.",
+              "Crude protein about 26 to 30%",
+            ],
+            [
+              "Amino acids",
+              "flask",
+              "Lysine, methionine, threonine and other additives to fine-tune formulas.",
+              "L-lysine HCl 98.5%; DL-methionine 99%",
+            ],
+            [
+              "DCP",
+              "sack",
+              "Dicalcium phosphate: phosphorus and calcium for bone growth and egg shell quality.",
+              "Phosphorus 18% minimum",
+            ],
+            [
+              "MCP",
+              "sack",
+              "Monocalcium phosphate: highly available phosphorus for young animals.",
+              "Phosphorus 21 to 22%",
+            ],
+          ],
+        },
+        food: {
+          t: "Food",
+          d: "Staples and consumer goods for wholesalers, processors and retailers.",
+          items: [
+            [
+              "Rice",
+              "grain",
+              "Long-grain and regional varieties in bulk or retail bags.",
+              "Grade, broken % and moisture agreed per order",
+            ],
+            [
+              "Soybeans",
+              "bean",
+              "Whole soybeans for food processing and crushing.",
+              "Protein, oil and moisture on certificate",
+            ],
+            [
+              "Vegetable oils and seeds",
+              "drop",
+              "Edible oils and oilseeds for cooking and industry.",
+              "Refined or crude; drums, IBC or bulk",
+            ],
+            [
+              "Lentils",
+              "bean",
+              "Red, green and other pulses, cleaned and sorted.",
+              "Size, purity and moisture agreed per order",
+            ],
+            [
+              "FMCG",
+              "cart",
+              "Packaged consumer goods for B2B buyers.",
+              "Range and packing on request",
+            ],
+          ],
+        },
+        petfood: {
+          t: "Pet food",
+          d: "Ingredients and finished products for dog and cat food brands.",
+          items: [
+            [
+              "Pet food ingredients",
+              "bowl",
+              "Proteins, grains, fats and additives for dry and wet formulas.",
+              "Made to your recipe specification",
+            ],
+            [
+              "Finished pet food",
+              "bowl",
+              "Supply and private label options, packed to your design.",
+              "Minimum order and packaging on request",
+            ],
+          ],
+        },
+      };
+      const SEC = [
+        "Animal feed additives",
+        "Minerals",
+        "Medicine",
+        "Food",
+        "Plant proteins",
+        "Animal proteins",
+        "FMCG",
+        "B2B worldwide",
+      ];
+      const NAV = [
+        ["home", "Home"],
+        ["about", "About us"],
+        ["products", "Products"],
+        ["services", "Services"],
+        ["why", "Why choose us"],
+        ["contact", "Contact"],
+      ];
+      const CTA = `<section class="cta"><div class="wrap"><h2>Need a quote or a sample?</h2><p class="lead">Send the product, quantity and destination. We reply within one working day.</p><div class="btns"><a class="btn p" href="#/contact">Request a quote</a><a class="btn" href="https://wa.me/4552175666" target="_blank" rel="noopener">Ask on WhatsApp</a></div></div></section>`;
+      const hero = (h, p, side, crumb) =>
+        `<div class="hero"><div class="wrap"><div class="in">${crumb ? `<div class="crumb"><a href="#/home">Home</a> / <a href="#/products">Products</a></div>` : ""}<h1>${h}</h1><p>${p}</p>${crumb === 2 ? `<div class="btns"><a class="btn p" href="#/contact">Request a quote</a><a class="btn" href="#/products">See products</a></div>` : ""}</div>${side || ""}</div></div>`;
+      const cat = (k) =>
+        `<a class="card tile" href="#/${k}">${ART[k]}<div><h3>${P[k].t}</h3><p>${P[k].d}</p></div></a>`;
+      const box = (a) =>
+        a
+          .map((r) => `<div class="card"><h3>${r[0]}</h3><p>${r[1]}</p></div>`)
+          .join("");
+      const pages = {
+        home: () =>
+          hero(
+            "Quality food and feed, from source to your gate.",
+            "Animal and plant proteins, feed additives, minerals, food and pet food for B2B buyers worldwide. Offices in Denmark and Singapore.",
+            `<ul class="sect">${SEC.map((s) => `<li><i></i>${s}</li>`).join("")}</ul>`,
+            2,
+          ) +
+          `<section><div class="wrap"><h2>Three product lines</h2><div class="grid g3">${cat("feed") + cat("food") + cat("petfood")}</div></div></section>
+<section class="alt"><div class="wrap"><h2>How we work</h2><div class="steps"><div><b>Source</b>We buy from vetted producers and keep more than one source per product.</div><div><b>Verify</b>Samples and certificates are checked against your specification.</div><div><b>Deliver</b>Documents, transport and clearance are handled to your agreed destination.</div></div></div></section>
+<section><div class="wrap two"><div><h2>Two offices, one contact</h2><p class="lead">Working from Denmark and Singapore lets us serve European and Asian buyers across time zones. You deal with one team from enquiry to delivery.</p><div class="btns"><a class="btn g" href="#/about">About us</a><a class="btn" style="border-color:var(--line)" href="#/services">Our services</a></div></div><div class="facts"><div><b>Denmark | Singapore</b><span>Offices for Europe and Asia</span></div><div><b>Specification first</b><span>Every lot matched to your written requirements</span></div><div><b>Consulting included</b><span>Sourcing advice and registration support</span></div></div></div></section>` +
+          CTA,
+        about: () =>
+          hero(
+            "About us",
+            "A young international trading company with one job: make good ingredients easy to buy.",
+            `<div class="dcard"><h3>Kumar Dhungel</h3><div class="role">Director</div><a href="mailto:kumar@himalayanfoodandfeed.com">kumar@himalayanfoodandfeed.com</a><a href="tel:+4552175666">+45 52 17 56 66</a></div>`,
+          ) +
+          `<section><div class="wrap two"><div><h2>Our story</h2><p class="lead">Himalayan Food and Feed was founded by people who saw how hard it can be for buyers to find dependable raw materials on time and to specification. The name reflects our roots in the Himalayan region. Our offices in Denmark and Singapore connect us to producers and buyers on several continents.</p><p class="lead">We supply animal and plant proteins, feed additives, minerals, food, pet food and consumer goods. We explain what we offer in plain language and stay reachable after the invoice is paid.</p></div><div class="facts"><div><b>Our mission</b><span>Reliable ingredients for the people who feed animals and families</span></div><div><b>Our promise</b><span>Honest specifications, clear prices, on-time delivery</span></div></div></div></section>
+<section class="alt"><div class="wrap"><h2>Our values</h2><div class="grid g3">${box(
+            [
+              [
+                "Responsibility",
+                "We stand behind every deal, big or small, so partners can trust us for the long term.",
+              ],
+              [
+                "Commitment",
+                "We offer safe, well-performing products and ways to make your purchasing more efficient.",
+              ],
+              [
+                "Sustainability",
+                "We build lasting relationships and support supply that protects your business and the land.",
+              ],
+            ],
+          )}</div></div></section>
+<section><div class="wrap"><h2>What we cover</h2><div class="grid g4">${SEC.map((s) => `<div class="card"><h3>${s}</h3></div>`).join("")}</div><p class="lead" style="margin-top:20px">Medicine and animal health products are supplied on request and depend on registration in the destination country.</p></div></section>` +
+          CTA,
+        products: () =>
+          hero(
+            "Products",
+            "Everything we supply, in one place. Choose a line to see details.",
+          ) +
+          `<section><div class="wrap"><div class="grid g3">${cat("feed") + cat("food") + cat("petfood")}</div></div></section><section class="alt"><div class="wrap"><h2>All products</h2><div class="grid g4">${Object.entries(
+            P,
+          )
+            .map(([k, v]) =>
+              v.items
+                .map(
+                  (i) =>
+                    `<a class="card" href="#/${k}">${ic(i[1])}<h3>${i[0]}</h3><p>${v.t}</p></a>`,
+                )
+                .join(""),
+            )
+            .join("")}</div></div></section>` +
+          CTA,
+        services: () =>
+          hero(
+            "Services",
+            "More than supply: we help you buy, register and receive.",
+          ) +
+          `<section><div class="wrap"><div class="grid g3">${box([
+            [
+              "Sourcing",
+              "Matching your specification with the right producer and grade.",
+            ],
+            [
+              "Quality control",
+              "Samples, certificates of analysis and inspection before shipment.",
+            ],
+            [
+              "Logistics",
+              "Shipping, documents and clearance arranged with trusted carriers.",
+            ],
+            [
+              "Registration support",
+              "Help with the product registration and paperwork some markets require.",
+            ],
+            [
+              "Consulting for feed mills",
+              "Ingredient selection and cost versus nutrition advice.",
+            ],
+            [
+              "B2B worldwide",
+              "Regular supply contracts and one-off lots for buyers in many countries.",
+            ],
+          ])}</div></div></section>` +
+          CTA,
+        why: () =>
+          hero("Why choose us", "Six reasons buyers stay with us.") +
+          `<section><div class="wrap"><div class="grid g3">${box([
+            [
+              "Quality you can verify",
+              "Certificates of analysis and inspection reports with every shipment.",
+            ],
+            [
+              "Supply that holds",
+              "Several producers per product, so one delay does not stop your line.",
+            ],
+            [
+              "Clear pricing",
+              "Quotes state exactly what is included: product, packing, freight, documents.",
+            ],
+            [
+              "Global reach",
+              "Offices in Denmark and Singapore serve buyers in Europe and Asia.",
+            ],
+            [
+              "Flexible orders",
+              "Trial lots, container loads and repeat contracts.",
+            ],
+            [
+              "Fast, personal replies",
+              "WhatsApp or email, answered within one working day.",
+            ],
+          ])}</div></div></section>
+<section class="alt"><div class="wrap two"><div><h2>Questions buyers ask</h2>
+<details><summary>What is the minimum order?</summary><p>It depends on the product. We supply trial quantities and full container loads.</p></details>
+<details><summary>Can you supply to my specification?</summary><p>Yes. Send your required parameters and we will confirm what is achievable.</p></details>
+<details><summary>Do you provide samples?</summary><p>For most products, yes. Contact us with the product and your address.</p></details>
+<details><summary>How do you handle delivery?</summary><p>We arrange transport and documents to your agreed destination.</p></details></div>
+<div class="facts"><div><b>Quality</b><span>Checked before shipment</span></div><div><b>Speed</b><span>Reply within one working day</span></div></div></div></section>` +
+          CTA,
+        contact: () =>
+          hero(
+            "Contact us",
+            "Tell us what you need, how much and where. We will send a quote.",
+          ) +
+          `<section><div class="wrap two"><form id="f"><label>Name<input name="n" required autocomplete="name"></label><label>Company (optional)<input name="c" autocomplete="organization"></label><label>Product line<select name="p"><option>Feed</option><option>Food</option><option>Pet food</option><option>Minerals and additives</option><option>Other</option></select></label><label>Product, quantity and destination<textarea name="m" required placeholder="e.g. Soybean meal, 100 tons, Singapore"></textarea></label><button class="btn p" type="submit">Send enquiry by email</button></form>
+<div class="dcard"><h3>Kumar Dhungel</h3><div class="role">Director</div><a href="#/contact">Saven 2630, Denmark</a><a href="tel:+4552175666">+45 52 17 56 66</a><a href="mailto:kumar@himalayanfoodandfeed.com">kumar@himalayanfoodandfeed.com</a><a href="https://www.himalayanfoodandfeed.com">www.himalayanfoodandfeed.com</a><a href="https://wa.me/4552175666" target="_blank" rel="noopener">WhatsApp: +45 52 17 56 66</a><p style="margin:14px 0 0;opacity:.8">Offices: Denmark | Singapore</p></div></div></section>`,
+      };
+      Object.keys(P).forEach(
+        (k) =>
+          (pages[k] = () =>
+            hero(P[k].t, P[k].d, ART[k], 1) +
+            `<section><div class="wrap"><div class="grid g3">${P[k].items.map((i) => `<div class="card">${ic(i[1])}<h3>${i[0]}</h3><p>${i[2]}</p><div class="spec"><b>Typical:</b> ${i[3]}. Confirmed by certificate per lot.</div></div>`).join("")}</div></div></section>` +
+            CTA),
+      );
+      function render() {
+        let k = location.hash.replace("#/", "") || "home";
+        if (!pages[k]) k = "home";
+        document.getElementById("app").innerHTML = pages[k]();
+        const cur = ["feed", "food", "petfood"].includes(k) ? "products" : k;
+        document.getElementById("nav").innerHTML = NAV.map(
+          (n) =>
+            `<a href="#/${n[0]}" class="${n[0] == cur ? "on" : ""}">${n[1]}</a>`,
+        ).join("");
+        const f = document.getElementById("f");
+        if (f)
+          f.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const d = new FormData(f);
+            location.href =
+              "mailto:kumar@himalayanfoodandfeed.com?subject=" +
+              encodeURIComponent("Enquiry: " + d.get("p")) +
+              "&body=" +
+              encodeURIComponent(
+                "Name: " +
+                  d.get("n") +
+                  "\nCompany: " +
+                  d.get("c") +
+                  "\n\n" +
+                  d.get("m"),
+              );
+          });
+        document.title =
+          (k == "home"
+            ? ""
+            : (P[k] ? P[k].t : NAV.find((n) => n[0] == k)[1]) + " | ") +
+          "Himalayan Food and Feed";
+        window.scrollTo(0, 0);
+      }
+      document.getElementById("lg").innerHTML = LOGO + NAME;
+      document.getElementById("lg2").innerHTML = LOGO + NAME;
+      window.addEventListener("hashchange", render);
+      render();
+    </script>
+  </body>
+</html>

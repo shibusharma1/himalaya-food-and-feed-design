@@ -24,7 +24,7 @@ $currentPageKey = $currentPageKey ?? 'home';
     </a>
 
     <!-- Desktop Navigation Menu -->
-    <nav class="hidden lg:flex items-center gap-6" aria-label="Primary Navigation">
+    <nav class="hidden lg:flex items-center gap-4" aria-label="Primary Navigation">
       <a href="<?= url('index.php') ?>" 
          class="nav-link <?= $currentPageKey === 'home' ? 'active' : '' ?>">
         Home

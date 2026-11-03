@@ -80,7 +80,7 @@ require __DIR__ . '/includes/header.php';
       <p>
         Under applicable data protection laws (including the EU/EEA GDPR), you maintain the right to access, rectify, or request the erasure of your personal contact data held by us. You may exercise these rights at any time by contacting our commercial director:
       </p>
-      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-sm">
         <strong>Data Controller:</strong> Himalayan Food and Feed<br>
         <strong>Director:</strong> Kumar Dhungel<br>
         <strong>Email:</strong> <a href="mailto:<?= CLIENT_EMAIL ?>" class="text-brand-green underline"><?= CLIENT_EMAIL ?></a><br>

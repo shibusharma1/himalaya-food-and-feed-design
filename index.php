@@ -42,7 +42,7 @@ $categories = get_all_categories();
           <span>Global B2B Supply &bull; Denmark &amp; Singapore</span>
         </div>
 
-        <h1 class="text-white text-3xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.15] font-heading">
+        <h1 class="text-white text-3xl sm:text-4xl lg:text-4xl font-extrabold tracking-tight leading-[1.15] font-heading">
           Reliable Food &amp; Feed Ingredients for Global B2B Markets
         </h1>
 
@@ -51,11 +51,11 @@ $categories = get_all_categories();
         </p>
 
         <div class="flex flex-wrap items-center gap-4 pt-2">
-          <a href="<?= url('contact.php#quote-form') ?>" class="btn-primary py-3.5 px-7 text-base">
+          <a href="<?= url('contact.php#quote-form') ?>" class="btn-primary py-3 px-6 text-base">
             <i class="fa-solid fa-file-invoice text-sm"></i>
             <span>Request a Quote</span>
           </a>
-          <a href="<?= url('products.php') ?>" class="btn-secondary py-3.5 px-6 text-base">
+          <a href="<?= url('products.php') ?>" class="btn-secondary py-3 px-6 text-base">
             <span>Explore Products</span>
             <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
           </a>

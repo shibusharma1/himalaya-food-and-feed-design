@@ -37,7 +37,7 @@ require __DIR__ . '/includes/header.php';
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-orange text-xs font-bold uppercase tracking-wider mb-4">
         <span>Corporate Profile &bull; Denmark &amp; Singapore</span>
       </div>
-      <h1 class="text-white text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 font-heading">
+      <h1 class="text-white text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 font-heading">
         About Himalayan Food &amp; Feed
       </h1>
       <p class="text-slate-200 text-lg sm:text-xl font-normal leading-relaxed">
@@ -150,7 +150,7 @@ require __DIR__ . '/includes/header.php';
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="service-card border-t-4 !border-t-brand-green">
+      <div class="service-card">
         <div class="w-12 h-12 rounded-lg bg-green-100 text-brand-green flex items-center justify-center text-xl mb-5">
           <i class="fa-solid fa-scale-balanced"></i>
         </div>
@@ -160,7 +160,7 @@ require __DIR__ . '/includes/header.php';
         </p>
       </div>
 
-      <div class="service-card border-t-4 !border-t-brand-orange">
+      <div class="service-card">
         <div class="w-12 h-12 rounded-lg bg-amber-100 text-brand-orange flex items-center justify-center text-xl mb-5">
           <i class="fa-solid fa-award"></i>
         </div>
@@ -170,7 +170,7 @@ require __DIR__ . '/includes/header.php';
         </p>
       </div>
 
-      <div class="service-card border-t-4 !border-t-brand-navy">
+      <div class="service-card">
         <div class="w-12 h-12 rounded-lg bg-blue-100 text-brand-navy flex items-center justify-center text-xl mb-5">
           <i class="fa-solid fa-leaf"></i>
         </div>

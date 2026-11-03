@@ -12,7 +12,7 @@ $pageSeo = [
     'title' => 'Page Not Found (404) | Himalayan Food and Feed',
     'description' => 'The requested commodity or trade page could not be located. Browse our product catalog or contact our commercial desk.',
     'canonical' => url('404.php'),
-    'robots' => 'noindex, follow',
+    'robots' => 'noindex, follow',  
     'breadcrumbs' => [
         ['name' => 'Home', 'url' => url('index.php')],
         ['name' => '404 Not Found', 'url' => url('404.php')]
@@ -33,7 +33,7 @@ require __DIR__ . '/includes/header.php';
       HTTP Error 404
     </span>
     
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-brand-navy mb-4 font-heading">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mb-4 font-heading">
       Page Not Found
     </h1>
     

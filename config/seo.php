@@ -175,3 +175,34 @@ function get_service_schema(string $serviceName, string $description): array {
         'areaServed' => ['Europe', 'Asia', 'Worldwide']
     ];
 }
+
+/**
+ * Generate JSON-LD Product Schema for B2B Catalog Items
+ */
+function get_product_schema(array $product): array {
+    return [
+        '@context' => 'https://schema.org',
+        '@type' => 'Product',
+        'name' => $product['name'],
+        'description' => $product['description'] ?? '',
+        'image' => url($product['image'] ?? 'assets/images/products/animal-proteins.webp'),
+        'category' => $product['cat_title'] ?? $product['category'] ?? 'Feed & Food Ingredients',
+        'brand' => [
+            '@type' => 'Brand',
+            'name' => APP_NAME
+        ],
+        'offers' => [
+            '@type' => 'Offer',
+            'availability' => 'https://schema.org/InStock',
+            'priceCurrency' => 'USD',
+            'price' => 'Contact for Quotation',
+            'priceSpecification' => [
+                '@type' => 'PriceSpecification',
+                'description' => 'Commercial wholesale pricing confirmed upon formal specification and volume enquiry'
+            ],
+            'seller' => [
+                '@id' => APP_CANONICAL_DOMAIN . '/#organization'
+            ]
+        ]
+    ];
+}

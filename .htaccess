@@ -19,6 +19,10 @@
     RewriteRule ^\.git.*$ - [F,L]
     RewriteRule ^.*\.log$ - [F,L]
 
+    # Canonical 301 redirects for product detail aliases
+    RewriteRule ^products/product[-_]detail(?:\.php)?$ product-detail.php [R=301,L,QSA]
+    RewriteRule ^product_detail(?:\.php)?$ product-detail.php [R=301,L,QSA]
+
     # Support clean URLs by mapping extensionless requests to .php files if they exist
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.php -f
